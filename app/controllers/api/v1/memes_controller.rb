@@ -24,9 +24,9 @@ class Api::V1::MemesController < ApplicationController
 
   private
 
-  def meme_params
-    params.permit()
-  end
+  # def meme_params
+  #   params.permit()
+  # end
 
   def find_meme
     @meme = Meme.find(params[:id])
