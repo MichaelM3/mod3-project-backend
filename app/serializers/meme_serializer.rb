@@ -1,5 +1,4 @@
 class MemeSerializer < ActiveModel::Serializer
-  attributes :user_id, :title, :image, :meme_text
-
+  attributes :title, :image, :meme_text, :user_id
   belongs_to :user
 end

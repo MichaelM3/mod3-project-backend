@@ -8,9 +8,14 @@ class Api::V1::MemesController < ApplicationController
   end
 
   def show
+    render json: MemeSerializer.new(@meme), status: :ok
   end
 
   def create
+    #byebug
+    @meme = Meme.create(meme_params)
+
+    render json: @meme, status: :created
   end
 
   def update
@@ -24,9 +29,10 @@ class Api::V1::MemesController < ApplicationController
 
   private
 
-  # def meme_params
-  #   params.permit()
-  # end
+  def meme_params
+    params.require(:meme).permit(:title, :meme_text, :image, :user_id)
+  end
+
 
   def find_meme
     @meme = Meme.find(params[:id])
