@@ -33,6 +33,7 @@ class Api::V1::MemesController < ApplicationController
     params.require(:meme).permit(:title, :meme_text, :image, :user_id)
   end
 
+
   def find_meme
     @meme = Meme.find(params[:id])
   end
