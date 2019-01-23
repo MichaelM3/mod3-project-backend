@@ -1,6 +1,6 @@
 class Api::V1::MemesController < ApplicationController
 
-  before_action :find_meme, only: [:show, :update]
+  before_action :find_meme, only: [:show, :update, :destroy]
 
   def index
     @memes = Meme.all
@@ -25,6 +25,11 @@ class Api::V1::MemesController < ApplicationController
     else
       render json: { errors: @meme.errors.full_messages }, status: :unprocessible_entity
     end
+  end
+
+  def destroy
+   @meme.destroy
+    render json: @memes
   end
 
   private
