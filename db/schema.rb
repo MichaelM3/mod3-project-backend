@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2019_01_24_163101) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "meme_text"
+    t.integer "like"
     t.boolean "position", default: false
   end
 
