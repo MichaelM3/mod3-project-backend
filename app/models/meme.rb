@@ -1,4 +1,4 @@
 class Meme < ApplicationRecord
-  belongs_to :user
   default_scope { order('id ASC')}
+  belongs_to :user
 end

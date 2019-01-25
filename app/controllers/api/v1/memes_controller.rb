@@ -1,6 +1,6 @@
 class Api::V1::MemesController < ApplicationController
 
-  before_action :find_meme, only: [:show, :update]
+  before_action :find_meme, only: [:show, :update, :destroy]
 
   def index
     @memes = Meme.all
@@ -27,11 +27,17 @@ class Api::V1::MemesController < ApplicationController
     end
   end
 
+  def destroy
+   @meme.destroy
+    render json: @memes
+  end
+
   private
 
   def meme_params
-    params.require(:meme).permit(:title, :meme_text, :image, :like, :user_id)
+    params.require(:meme).permit(:title, :meme_text, :image, :like, :position, :user_id)
   end
+
 
   def find_meme
     @meme = Meme.find(params[:id])
